@@ -1,0 +1,46 @@
+This is intended to be a little nearly-pure-OO language.
+Generic functions a la CLOS or Meroon.
+
+
+Generic function calls have a Lispy syntax:
+(<method> <instance> <args> ...)
+
+Defining a method is fairly simple:
+
+method <name> <class> <args> ... :
+   <body> ...
+end
+
+Defining a class is also nigh trivial:
+
+class <name> <parent>
+   <varname> ...
+end
+
+
+
+We don't have blocks or namespaces or anything...  Blocks would be useful
+'cause then we could do control structures.  Instead, we have an if statement
+like so:
+if <expr> then
+   ...
+elif <expr> then
+   ...
+else
+   ...
+end
+
+Otherwise it'd be
+(if <bool> |expr1| |expr2|)
+
+
+
+Okay, internal representation.  First, I'm not sure if classes should be
+different from objects, or what.
+
+Okay, so we have instances.  Each instance has a bunch of slots, and a
+pointer to its class (or some other identifier for it)
+
+KISS.  Internally we don't do generics, we use a message-sending type thing.
+Each method is just a slot in the class...  So handily, each class is an
+instance.  Yay.
